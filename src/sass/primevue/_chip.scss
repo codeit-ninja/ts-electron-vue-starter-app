@@ -1,0 +1,11 @@
+.p-chip {
+    &-text {
+        background-color: $body-bg;
+        border: .1em solid lighten($body-bg, 65);
+        margin-right: .3rem;
+        border-radius: 3px;
+        padding: .3rem 1rem;
+        font-size: .8rem;
+        color: lighten($body-bg, 75);
+    }
+}

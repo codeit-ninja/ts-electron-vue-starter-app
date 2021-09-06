@@ -1,0 +1,3 @@
+<template>
+    Loading movie details ...
+</template>

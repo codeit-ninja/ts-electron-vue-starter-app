@@ -1,30 +1,25 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+    <router-view />
+    <Suspense v-if="MovieStore.state.modal">
+        <template #default>
+            <MovieModal/>
+        </template>
+        <template #fallback>
+            Loading
+        </template>
+    </Suspense>
 </template>
+<script lang="ts">import { defineComponent, defineAsyncComponent } from "vue";
+import MovieStore from './store/MovieStore';
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default defineComponent({
+    components: {
+        MovieModal: defineAsyncComponent(() => import('./components/movies/MovieModal.vue')),
+    },
+    data() {
+        return {
+            MovieStore
+        }
     }
-  }
-}
-</style>
+})
+</script>

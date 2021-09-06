@@ -1,18 +1,25 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+  <MovieCarousel :movies="populairMovies" title="Currently popular" />
+  <MovieCarousel :movies="topRatedMovies" title="Best rated" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import { defineComponent } from 'vue'
+import MovieCarousel from '@/components/movies/MovieCarousel.vue'
+import { getPopularMovies, getTopRatedMovies } from '@/composables';
 
 export default defineComponent({
-  name: 'Home',
-  components: {
-    HelloWorld,
-  },
-});
+    setup() {
+        const { populairMovies } = getPopularMovies();
+        const { topRatedMovies } = getTopRatedMovies();
+
+        return {
+            populairMovies,
+            topRatedMovies
+        }
+    },
+    components: {
+        MovieCarousel
+    }
+})
 </script>

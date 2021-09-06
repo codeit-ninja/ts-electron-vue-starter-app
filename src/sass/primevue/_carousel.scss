@@ -1,0 +1,68 @@
+.p-carousel {
+    &-container {
+        position: relative;
+    }
+
+    &-header {
+        color: lighten($body-bg, 75);
+        padding: 1rem;
+    }
+
+    &-item {
+        overflow: hidden;
+        position: relative;
+
+        .title {
+            color: lighten($body-bg, 75);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .movie-link {
+            overflow: hidden;
+
+            &:hover {
+                img {
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        img {
+            transition: transform .12s ease-in-out;
+        }
+    }
+
+    .p-items-hidden .p-carousel-item {
+        visibility: visible;
+    }
+
+    &-next,
+    &-prev {
+        display: block;
+        position: absolute;
+        z-index: 99;
+        height: 100%;
+        padding: 0 2rem !important;
+        color: $white;
+        font-size: 1.8rem;
+        opacity: .4;
+
+        &:hover {
+            opacity: 1;
+            transition: opacity .12s ease-in-out;
+        }
+    }
+
+    &-next {
+        background: rgb(255,255,255);
+        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, $body-bg 100%);
+        right: 0;
+    }
+
+    &-prev {
+        background: rgb(0,0,0);
+        background: linear-gradient(90deg, $body-bg 0%, rgba(255,255,255,0) 100%);
+        left: 0;
+    }
+}
