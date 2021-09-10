@@ -1,7 +1,7 @@
 {
     "name": "ts-electron-vue3-starter-app",
-    "version": "0.1.2",
-    "main": "background.js",
+    "version": "0.1.3",
+    "main": "background.ts",
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
