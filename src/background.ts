@@ -3,9 +3,7 @@
 import { app, protocol, BrowserWindow, ipcMain } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
-import { ServiceMethodNotFoundError, ServiceNotFoundError, services } from './services/Services'
-import ffmpegPath from 'ffmpeg-static';
-import ffmpeg from 'fluent-ffmpeg';
+import { services } from './services/Services'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
