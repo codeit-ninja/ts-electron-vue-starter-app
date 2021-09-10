@@ -47,7 +47,7 @@ Here is an example how to use the store
 
     export default defineComponent({
         const { state } = CarStore;
-	 const selectCar = (car) => state.selected = car;
+	    const selectCar = (car) => state.selected = car;
 		
         onMounted( async () => {
             state.list = await useService('CarService').getCarsByBrand('Volkswagen')
