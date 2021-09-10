@@ -10,14 +10,14 @@ You can use a `service` inside the *renderer* by calling the `useService('name-o
 
 So for example:
 
-    import { ExampleService } from  './ExampleService'
+    import { ExampleService } from './ExampleService'
     import { MyNewService } from './MyNewService'
     
     /**
      * Register your services here
      */
     export  const  services  = {
-        ExampleService: new  ExampleService(),
+        ExampleService: new ExampleService(),
         MyNewService: new MyNewService()
     }
 
@@ -47,7 +47,7 @@ Here is an example how to use the store
 
     export default defineComponent({
         const { state } = CarStore;
-		const selectCar = (car) => state.selected = car;
+	const selectCar = (car) => state.selected = car;
 		
         onMounted( async () => {
             state.list = await useService('CarService').getCarsByBrand('Volkswagen')
