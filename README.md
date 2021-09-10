@@ -32,7 +32,7 @@ You can now call it in the *renderer* like so
 
 A store is an *object* with *reactive* properties, all properties defined inside the store are *reactive* by default. You can find an example in `src/store/ExampleStore.ts`
 
-Creating a new store is simple, just extend the base `Store`. Note that you should export it as a `default new class`
+Creating a new store is simple, just extend the base `Store`. Note that you should export a new store as `default new class`
 
     export default new class CarStore extends Store<CarStore> {
         public list = [/* array of objects with cars */];
