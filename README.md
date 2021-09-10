@@ -1,7 +1,7 @@
-## Electron + Vue 3 + TypeScript starter app
+# Electron + Vue 3 + TypeScript starter app
 Quik starters template for Electron, Vue 3 and TypeScript. So you dont have to setup a project yourself each time. Just clone the repository and run `npm run electron:serve`
 
-# Services
+## Services
 ****You can delete this if you want to use you're own implementation.***
 
 A service is a `class` which communicates between Electrons *renderer* process and the *main* process. There is an example provided in`src/services`
