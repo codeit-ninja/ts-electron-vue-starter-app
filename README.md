@@ -30,7 +30,7 @@ You can now call it in the *renderer* like so
 ## Store
 *****As for services, you can delete this if you want to implement you're own logic here aswell.***
 
-A store an *object* with *reactive* properties, all properties defined inside a store are *reactive*. You can find an example in `src/store/ExampleStore.ts`
+A store is an *object* with *reactive* properties, all properties defined inside the store are *reactive* by default. You can find an example in `src/store/ExampleStore.ts`
 
 Creating a new store is simple, just extend the base `Store`. Note that you should export it as a `default new class`
 
