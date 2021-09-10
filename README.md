@@ -6,7 +6,7 @@ Quik starters template for Electron, Vue 3 and TypeScript. So you dont have to s
 
 A service is a `class` which communicates between Electrons *renderer* process and the *main* process. There is an example provided in`src/services`
 
-You can use a `service` inside the *renderer* by calling the `useService('name-of-service')` method.  Don't forget to register a new `service` inside the `src/services/Services.ts`.
+You can use a `service` inside the *renderer* by calling the `useService('name-of-service')` method.  Don't forget to register it first in `src/services/Services.ts`.
 
 So for example:
 
