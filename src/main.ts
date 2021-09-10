@@ -2,7 +2,7 @@ import { createApp, App as Vue } from 'vue'
 import VueApp from './App.vue'
 import router from './router'
 
-import './sass/main.scss';
+import './scss/main.scss';
 
 export default new class App {
     protected vue: Vue;
