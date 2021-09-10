@@ -1,22 +1,5 @@
-import { reactive, UnwrapRef } from "vue";
-
+import { reactive, UnwrapRef, toRaw } from "vue";
 export default abstract class Store<C> {
-    /**
-     * Is store loading data?
-     * 
-     * @public
-     * @type { boolean }
-     */
-    public loading = false;
-
-    /**
-     * Is store updating data?
-     * 
-     * @public
-     * @type { boolean }
-     */
-    public updating = false;
-
     /**
      * Store state
      * 
@@ -25,7 +8,7 @@ export default abstract class Store<C> {
      * @public
      * @type { C }
      */
-    public state: UnwrapRef<Omit<C, 'state' | 'model'>>;
+    public state!: UnwrapRef<Omit<C, 'state' | 'model'>>;
 
     /**
      * Copy of store data
@@ -35,14 +18,14 @@ export default abstract class Store<C> {
      * @public
      * @type { C }
      */
-    public model: Omit<C, 'model' | 'state'>;
+    public model!: Omit<C, 'model' | 'state'>;
 
     constructor() {
         // @ts-expect-error: This line will always work because JavaScript has some flaws
-        this.state = reactive(this);
+        this.state = reactive(toRaw(this));
 
         // @ts-expect-error: This line will always work because JavaScript has some flaws
-        this.model = { ...this.state };
+        this.model = toRaw({...this});
 
         // @ts-expect-error: This line will always work because JavaScript has some flaws
         delete this.model.state;
@@ -54,7 +37,7 @@ export default abstract class Store<C> {
      * @public
      */
     public commit() {
-        // @ts-expect-error: This line will always work because JavaScript has some flaws
+        // @ts-expect-error: Ignore because we loop over own object
         Object.keys(this.model).forEach(key => this.state[key] = this.model[key])
     }
 }

@@ -2,8 +2,11 @@
 
 import { app, protocol, BrowserWindow, ipcMain } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
-import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
+import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 import { ServiceMethodNotFoundError, ServiceNotFoundError, services } from './services/Services'
+import ffmpegPath from 'ffmpeg-static';
+import ffmpeg from 'fluent-ffmpeg';
+
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // Scheme must be registered before the app is ready
@@ -17,10 +20,10 @@ ipcMain.handle('service:call', (event, name: string, method: string, ...payloads
     }
     const service = (services as any)[name]
     if (!service) {
-        throw new ServiceNotFoundError(name)
+        throw new Error(`Service not found: ${name}`)
     }
     if (!service[method]) {
-        throw new ServiceMethodNotFoundError(name, method)
+        throw new Error(`${method} does not exist in ${name}`)
     }
     return service[method](...payloads)
 })
@@ -74,8 +77,8 @@ app.on('ready', async () => {
     if (isDevelopment && !process.env.IS_TEST) {
         // Install Vue Devtools
         try {
-            await installExtension(VUEJS3_DEVTOOLS)
-        } catch (e) {
+            await installExtension(VUEJS_DEVTOOLS)
+        } catch (e: any) {
             console.error('Vue Devtools failed to install:', e.toString())
         }
     }

@@ -1,6 +1,5 @@
-@import './variables';
-@import '../../node_modules/bootstrap/scss/bootstrap.scss';
-@import '../../node_modules/bootstrap-icons/font/bootstrap-icons.css';
-
-@import './overlay';
-@import './primevue/index.scss';
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    text-align: center;
+}
